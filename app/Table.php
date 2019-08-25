@@ -10,4 +10,5 @@ class Table
     const GAMES = 'games';
     const EVENTS = 'events';
     const USERS = 'users';
+    const TOURNAMENTS = 'tournaments';
 }
