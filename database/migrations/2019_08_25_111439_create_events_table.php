@@ -21,11 +21,15 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->string('header', 255)->nullable();
             $table->string('logo', 255)->nullable();
-            $table->timestamp('held_at');
-            $table->unsignedBigInteger('creator_id');
+
             $table->string('place');
+
+            $table->unsignedBigInteger('creator_id');
             $table->unsignedBigInteger('status_id');
+
+            $table->timestamp('held_at');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('status_id')->references('id')->on(Table::STATUSES);
             $table->foreign('creator_id')->references('id')->on(Table::USERS);

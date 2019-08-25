@@ -11,4 +11,5 @@ class Table
     const EVENTS = 'events';
     const USERS = 'users';
     const TOURNAMENTS = 'tournaments';
+    const EVENT_TOURNAMENT = 'event_tournament';
 }

@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
@@ -17,17 +18,25 @@ class Event extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function status()
     {
         return $this->belongsTo(Status::class);
     }
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id', 'id');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function tournaments()
+    {
+        return $this->belongsToMany(Tournament::class)->using(EventTournament::class);
     }
 }

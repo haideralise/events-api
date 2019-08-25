@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusesTable extends Migration
+class CreateEventTournamentsTable extends Migration
 {
-    protected $table = Table::STATUSES;
+    protected $table = Table::EVENT_TOURNAMENT;
     /**
      * Run the migrations.
      *
@@ -17,10 +17,13 @@ class CreateStatusesTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->unique();
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('tournament_id');
+
+            $table->foreign('tournament_id')->references('id')->on(Table::TOURNAMENTS);
+            $table->foreign('event_id')->references('id')->on(Table::EVENTS);
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

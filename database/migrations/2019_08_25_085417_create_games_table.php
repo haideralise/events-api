@@ -20,8 +20,9 @@ class CreateGamesTable extends Migration
             $table->string('name')->unique();
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('statuses');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

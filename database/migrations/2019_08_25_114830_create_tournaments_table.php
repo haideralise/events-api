@@ -30,6 +30,7 @@ class CreateTournamentsTable extends Migration
             $table->foreign('creator_id')->references('id')->on(Table::USERS);
 
             $table->unique(['title', 'game_id', 'creator_id']);
+
             $table->timestamp('held_at');
             $table->timestamps();
             $table->softDeletes();
