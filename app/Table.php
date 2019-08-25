@@ -12,4 +12,7 @@ class Table
     const USERS = 'users';
     const TOURNAMENTS = 'tournaments';
     const EVENT_TOURNAMENT = 'event_tournament';
+    const CITIES = 'cities';
+    const STATES = 'states';
+    const COUNTRIES = 'countries';
 }
