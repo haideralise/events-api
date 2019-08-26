@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateStatesTable extends Migration
 {
-    protected $table = Table::STATES;
+    protected $table = TableProperties::STATES;
     /**
      * Run the migrations.
      *
@@ -19,7 +19,7 @@ class CreateStatesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on(Table::COUNTRIES);
+            $table->foreign('country_id')->references('id')->on(TableProperties::COUNTRIES);
             $table->timestamps();
         });
     }

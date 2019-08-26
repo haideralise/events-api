@@ -4,7 +4,7 @@
 namespace App;
 
 
-class Table
+class TableProperties
 {
     const STATUSES = 'statuses';
     const GAMES = 'games';

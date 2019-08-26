@@ -1,7 +1,7 @@
 <?php
 
 use App\Status;
-use App\Table;
+use App\TableProperties;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 

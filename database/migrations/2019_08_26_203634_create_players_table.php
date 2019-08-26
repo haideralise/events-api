@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreatePlayersTable extends Migration
 {
-    protected $table = Table::PLAYERS;
+    protected $table = TableProperties::PLAYERS;
     /**
      * Run the migrations.
      *
@@ -22,7 +22,7 @@ class CreatePlayersTable extends Migration
             $table->text('bio')->nullable();
 
             $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on(Table::CITIES);
+            $table->foreign('city_id')->references('id')->on(TableProperties::CITIES);
 
             $table->timestamps();
             $table->softDeletes();

@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateEventTournamentsTable extends Migration
 {
-    protected $table = Table::EVENT_TOURNAMENT;
+    protected $table = TableProperties::EVENT_TOURNAMENT;
     /**
      * Run the migrations.
      *
@@ -20,8 +20,8 @@ class CreateEventTournamentsTable extends Migration
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('tournament_id');
 
-            $table->foreign('tournament_id')->references('id')->on(Table::TOURNAMENTS);
-            $table->foreign('event_id')->references('id')->on(Table::EVENTS);
+            $table->foreign('tournament_id')->references('id')->on(TableProperties::TOURNAMENTS);
+            $table->foreign('event_id')->references('id')->on(TableProperties::EVENTS);
 
             $table->timestamps();
         });

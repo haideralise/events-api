@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateStatusesTable extends Migration
 {
-    protected $table = Table::STATUSES;
+    protected $table = TableProperties::STATUSES;
     /**
      * Run the migrations.
      *

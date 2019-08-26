@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateGamesTable extends Migration
 {
-    protected $table = Table::GAMES;
+    protected $table = TableProperties::GAMES;
     /**
      * Run the migrations.
      *

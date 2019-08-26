@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateEventsTable extends Migration
 {
-    protected $table = Table::EVENTS;
+    protected $table = TableProperties::EVENTS;
     /**
      * Run the migrations.
      *
@@ -31,8 +31,8 @@ class CreateEventsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('status_id')->references('id')->on(Table::STATUSES);
-            $table->foreign('creator_id')->references('id')->on(Table::USERS);
+            $table->foreign('status_id')->references('id')->on(TableProperties::STATUSES);
+            $table->foreign('creator_id')->references('id')->on(TableProperties::USERS);
 
         });
     }

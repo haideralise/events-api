@@ -1,6 +1,6 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,8 +20,8 @@ class CreateCitiesTable extends Migration
             $table->unsignedBigInteger('state_id');
             $table->unsignedBigInteger('country_id');
 
-            $table->foreign('country_id')->references('id')->on(Table::COUNTRIES);
-            $table->foreign('state_id')->references('id')->on(Table::STATES);
+            $table->foreign('country_id')->references('id')->on(TableProperties::COUNTRIES);
+            $table->foreign('state_id')->references('id')->on(TableProperties::STATES);
 
 
             $table->timestamps();

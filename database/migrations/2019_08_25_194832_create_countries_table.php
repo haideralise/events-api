@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateCountriesTable extends Migration
 {
-    protected $table = Table::COUNTRIES;
+    protected $table = TableProperties::COUNTRIES;
     /**
      * Run the migrations.
      *

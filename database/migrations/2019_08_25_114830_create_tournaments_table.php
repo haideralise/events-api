@@ -1,13 +1,13 @@
 <?php
 
-use App\Table;
+use App\TableProperties;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateTournamentsTable extends Migration
 {
-    protected $table = Table::TOURNAMENTS;
+    protected $table = TableProperties::TOURNAMENTS;
     /**
      * Run the migrations.
      *
@@ -25,9 +25,9 @@ class CreateTournamentsTable extends Migration
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('status_id');
 
-            $table->foreign('game_id')->references('id')->on(Table::GAMES);
-            $table->foreign('status_id')->references('id')->on(Table::STATUSES);
-            $table->foreign('creator_id')->references('id')->on(Table::USERS);
+            $table->foreign('game_id')->references('id')->on(TableProperties::GAMES);
+            $table->foreign('status_id')->references('id')->on(TableProperties::STATUSES);
+            $table->foreign('creator_id')->references('id')->on(TableProperties::USERS);
 
             $table->unique(['title', 'game_id', 'creator_id']);
 
