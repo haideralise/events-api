@@ -15,4 +15,5 @@ class Table
     const CITIES = 'cities';
     const STATES = 'states';
     const COUNTRIES = 'countries';
+    const PLAYERS = 'players';
 }
