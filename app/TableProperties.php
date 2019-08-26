@@ -16,4 +16,6 @@ class TableProperties
     const STATES = 'states';
     const COUNTRIES = 'countries';
     const PLAYERS = 'players';
+    const GAME_PLAYER = 'game_player';
+    const GAME_PROFICIENCIES = 'game_proficiencies';
 }
