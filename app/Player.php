@@ -25,7 +25,11 @@ class Player extends Model
      */
     public function games()
     {
-        return $this->belongsToMany(Game::class, TableProperties::GAME_PLAYER);
+        return $this->belongsToMany(Game::class,
+            TableProperties::ROSTERS,
+            'rosterable_id',
+            'game_id'
+        )->where('rosterable_type', Player::class);
     }
 
     /**
@@ -33,6 +37,18 @@ class Player extends Model
      */
     public function proficiencies()
     {
-        return $this->belongsToMany(GameProficiency::class, TableProperties::GAME_PLAYER, 'proficiency_id', 'id');
+        return $this->belongsToMany(GameProficiency::class,
+            TableProperties::ROSTERS,
+            'rosterable_id',
+            'proficiency_id'
+        )->where('rosterable_type', Player::class);
+    }
+
+    /**
+     * Get all of the post's rosters.
+     */
+    public function rosters()
+    {
+        return $this->morphMany(Roster::class, 'rosterable');
     }
 }

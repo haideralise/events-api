@@ -32,7 +32,12 @@ class Game extends Model
      */
     public function players()
     {
-        return $this->belongsToMany(Player::class, TableProperties::GAME_PLAYER);
+        return $this->belongsToMany(Player::class,
+            TableProperties::ROSTERS,
+            'game_id',
+            'rosterable_id'
+
+        )->where('rosterable_type', Player::class);
     }
 
     /**
@@ -40,6 +45,11 @@ class Game extends Model
      */
     public function proficiencies()
     {
-        return $this->belongsToMany(GameProficiency::class, TableProperties::GAME_PLAYER, 'proficiency_id', 'id');
+        return $this->belongsToMany(GameProficiency::class,
+            TableProperties::ROSTERS,
+            'game_id',
+            'proficiency_id'
+
+        )->where('rosterable_type', Player::class);
     }
 }

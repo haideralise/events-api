@@ -25,7 +25,11 @@ class GameProficiency extends Model
      */
     public function games()
     {
-        return $this->belongsToMany(Game::class, TableProperties::GAME_PLAYER, 'proficiency_id');
+        return $this->belongsToMany(Game::class,
+            TableProperties::ROSTERS,
+            'proficiency_id',
+            'game_id'
+        )->where('rosterable_type', Player::class);
     }
 
     /**

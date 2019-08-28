@@ -13,5 +13,8 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(StatusSeeder::class);
          $this->call(GameProficiencySeeder::class);
+         $this->call(CountrySeeder::class);
+         $this->call(StatesSeeder::class);
+         $this->call(CitiesSeeder::class);
     }
 }

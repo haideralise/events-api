@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamePlayersTable extends Migration
+class CreateRostersTable extends Migration
 {
-    protected $table = TableProperties::GAME_PLAYER;
+    protected $table = TableProperties::ROSTERS;
     /**
      * Run the migrations.
      *
@@ -17,14 +17,13 @@ class CreateGamePlayersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->unsignedBigInteger('rosterable_id');
+            $table->string('rosterable_type');
             $table->unsignedBigInteger('game_id');
-            $table->unsignedBigInteger('player_id');
-            $table->unsignedBigInteger('proficiency_id');
-
-            $table->foreign('game_id')->references('id')->on(TableProperties::GAMES);
-            $table->foreign('player_id')->references('id')->on(TableProperties::PLAYERS);
+            $table->foreign('game_id')->on(TableProperties::GAMES)->references('id');
+            $table->unsignedBigInteger('proficiency_id')->nullable();
             $table->foreign('proficiency_id')->references('id')->on(TableProperties::GAME_PROFICIENCIES);
+
 
             $table->timestamps();
         });
