@@ -12,6 +12,38 @@ class Roster extends Model
         return $this->morphTo();
     }
 
+    public function player()
+    {
+        return $this->belongsTo(Player::class,
+            'rosterable_id',
+            'id'
+        );
+    }
+    public function team()
+    {
+        return $this->belongsTo(Team::class,
+            'rosterable_id',
+            'id'
+        );
+    }
+
+    public function game()
+    {
+        return $this->belongsTo(Game::class,
+            'game_id',
+            'id'
+        );
+    }
+
+    public function proficiency()
+    {
+        return $this->belongsTo(GameProficiency::class,
+            'proficiency_id',
+            'id'
+        );
+    }
+
+
     /**
      * @param Builder $query
      * @param $game_id

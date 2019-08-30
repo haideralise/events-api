@@ -2,18 +2,18 @@
 
 namespace App;
 
+use App\Interfaces\ForiegnPivotKeyAble;
+use App\Roster\RosterQueryTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Game
  * @package App
  */
-class Game extends Model
+class Game extends Model implements ForiegnPivotKeyAble
 {
-    use SoftDeletes;
+    use RosterQueryTrait;
     /**
      * @var array
      */
@@ -28,28 +28,12 @@ class Game extends Model
     }
 
     /**
-     * @return BelongsToMany
+     * returns pivot key field e.g game_id for games in roster
+     *
+     * @return string
      */
-    public function players()
+    public function foriegnPivotKey(): string
     {
-        return $this->belongsToMany(Player::class,
-            TableProperties::ROSTERS,
-            'game_id',
-            'rosterable_id'
-
-        )->where('rosterable_type', Player::class);
-    }
-
-    /**
-     * @return BelongsToMany
-     */
-    public function proficiencies()
-    {
-        return $this->belongsToMany(GameProficiency::class,
-            TableProperties::ROSTERS,
-            'game_id',
-            'proficiency_id'
-
-        )->where('rosterable_type', Player::class);
+        return 'game_id';
     }
 }

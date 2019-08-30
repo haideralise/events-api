@@ -2,11 +2,16 @@
 
 namespace App;
 
+use App\Interfaces\ForiegnPivotKeyAble;
+use App\Interfaces\RosterableType;
+use App\Roster\RosterQueryTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class GameProficiency extends Model
+class GameProficiency extends Model implements ForiegnPivotKeyAble
 {
+
+    use RosterQueryTrait;
     protected $guarded = ['id'];
     const BEGINNER_ID =  1;
     const INTERMEDIATE_ID = 2;
@@ -19,18 +24,6 @@ class GameProficiency extends Model
     const BEGINNER_LEVEL =  1;
     const INTERMEDIATE_LEVEL = 2;
     const PROFESSIONAL_LEVEL = 3;
-
-    /**
-     * @return BelongsToMany
-     */
-    public function games()
-    {
-        return $this->belongsToMany(Game::class,
-            TableProperties::ROSTERS,
-            'proficiency_id',
-            'game_id'
-        )->where('rosterable_type', Player::class);
-    }
 
     /**
      * @return array
@@ -52,5 +45,15 @@ class GameProficiency extends Model
                 'level' => self::PROFESSIONAL_LEVEL,
             ]
         ];
+    }
+
+    /**
+     * returns pivot key field e.g game_id for games in roster
+     *
+     * @return string
+     */
+    public function foriegnPivotKey(): string
+    {
+        return 'proficiency_id';
     }
 }
