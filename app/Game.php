@@ -6,6 +6,7 @@ use App\Interfaces\ForiegnPivotKeyAble;
 use App\Roster\RosterQueryTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Game
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Game extends Model implements ForiegnPivotKeyAble
 {
+    use SoftDeletes;
     use RosterQueryTrait;
     /**
      * @var array
