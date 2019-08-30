@@ -5,7 +5,7 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+/* TODO: not being used, remove it*/
 trait RosterableTrait
 {
     /**
