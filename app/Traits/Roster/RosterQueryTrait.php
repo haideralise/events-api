@@ -1,10 +1,8 @@
 <?php
 
 
-namespace App\Roster;
+namespace App\Traits\Roster;
 
-
-use App\Roster;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait RosterQueryTrait

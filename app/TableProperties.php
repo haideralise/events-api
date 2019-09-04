@@ -1,4 +1,4 @@
-<?phpnamespace App\Models;
+<?php namespace App;
 
 
 class TableProperties

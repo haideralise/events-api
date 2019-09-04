@@ -2,11 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Game;
-use App\GameProficiency;
-use App\Player;
-use App\Roster;
-use App\Team;
+use App\Models\Game;
+use App\Models\GameProficiency;
+use App\Models\Player;
+use App\Models\Roster;
+use App\Models\Team;
 use Faker\Generator as Faker;
 
 $factory->define(Roster::class, function (Faker $faker) {

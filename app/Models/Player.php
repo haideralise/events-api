@@ -1,13 +1,12 @@
-<?phpnamespace App\Models;
+<?php namespace App\Models;
 
-use App\Interfaces\ForeignPivotKeyAble;
-use App\Roster\RosterQueryTrait;
-
+use App\Traits\Roster\RosterQueryTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Player extends Model implements ForeignPivotKeyAble
+class Player extends Model
 {
     use SoftDeletes;
     use RosterQueryTrait;
@@ -21,21 +20,12 @@ class Player extends Model implements ForeignPivotKeyAble
         return $this->belongsTo(City::class);
     }
 
+
     /**
-     * Get all of the post's rosters.
+     * @return MorphMany
      */
     public function rosters()
     {
         return $this->morphMany(Roster::class, 'rosterable');
-    }
-
-    /**
-     * returns pivot key field e.g game_id for games in roster
-     *
-     * @return string
-     */
-    public function foreignPivotKey(): string
-    {
-        return  'rosterable_id';
     }
 }

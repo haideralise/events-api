@@ -1,44 +1,54 @@
-<?phpnamespace App\Models;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * Class Roster
+ * @package App\Models
+ */
 class Roster extends Model
 {
+    /**
+     * @return MorphTo
+     */
     public function rosterable()
     {
         return $this->morphTo();
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function player()
     {
-        return $this->belongsTo(Player::class,
-            'rosterable_id',
-            'id'
-        );
+        return ($this->rosterable_type == Player::class) ? $this->belongsTo(Player::class, 'rosterable_id'): null;
     }
+
+    /**
+     * @return BelongsTo
+     */
     public function team()
     {
-        return $this->belongsTo(Team::class,
-            'rosterable_id',
-            'id'
-        );
+        return ($this->rosterable_type == Team::class) ? $this->belongsTo(Team::class, 'rosterable_id') : null;
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function game()
     {
-        return $this->belongsTo(Game::class,
-            'game_id',
-            'id'
-        );
+        return $this->belongsTo(Game::class, 'game_id');
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function proficiency()
     {
-        return $this->belongsTo(GameProficiency::class,
-            'proficiency_id',
-            'id'
-        );
+        return $this->belongsTo(GameProficiency::class, 'proficiency_id');
     }
 
 
@@ -54,6 +64,7 @@ class Roster extends Model
 
     /**
      * @param Builder $query
+     * @param $rosterable_type
      * @return Builder
      */
     public function scopeOfType(Builder $query, $rosterable_type)
@@ -81,6 +92,7 @@ class Roster extends Model
 
     /**
      * @param Builder $query
+     * @param $player_id
      * @return Builder
      */
     public function scopeOfPlayer(Builder $query, $player_id)
@@ -90,13 +102,12 @@ class Roster extends Model
 
     /**
      * @param Builder $query
+     * @param $team_id integer
      * @return Builder
      */
     public function scopeOfTeam(Builder $query, $team_id)
     {
         return $query->ofType(Player::class)->where('rosterable_id', $team_id);
     }
-
-
 
 }

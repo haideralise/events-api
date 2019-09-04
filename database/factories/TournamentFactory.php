@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Game;
-use App\Status;
-use App\Tournament;
-use App\User;
+use App\Models\Game;
+use App\Models\Status;
+use App\Models\Tournament;
+use App\Models\User;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 

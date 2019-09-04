@@ -1,11 +1,9 @@
-<?phpnamespace App\Models;
+<?php namespace App\Models;
 
-use App\Interfaces\ForeignPivotKeyAble;
-use App\Interfaces\RosterableType;
-use App\Roster\RosterQueryTrait;
+use App\Traits\Roster\RosterQueryTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model implements ForeignPivotKeyAble
+class Team extends Model
 {
     use RosterQueryTrait;
     /**
@@ -14,15 +12,5 @@ class Team extends Model implements ForeignPivotKeyAble
     public function rosters()
     {
         return $this->morphMany(Roster::class, 'rosterable');
-    }
-
-    /**
-     * returns pivot key field e.g game_id for games in roster
-     *
-     * @return string
-     */
-    public function foreignPivotKey(): string
-    {
-        return  'rosterable_id';
     }
 }
