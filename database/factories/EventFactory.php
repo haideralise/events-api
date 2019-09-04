@@ -2,9 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Event;
-use App\Status;
-use App\User;
+use App\Models\Event;
+use App\Models\Status;
+use App\Models\User;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 
