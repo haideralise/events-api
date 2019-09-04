@@ -2,14 +2,14 @@
 
 namespace App;
 
-use App\Interfaces\ForiegnPivotKeyAble;
+use App\Interfaces\ForeignPivotKeyAble;
 use App\Roster\RosterQueryTrait;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Player extends Model implements ForiegnPivotKeyAble
+class Player extends Model implements ForeignPivotKeyAble
 {
     use SoftDeletes;
     use RosterQueryTrait;
@@ -36,7 +36,7 @@ class Player extends Model implements ForiegnPivotKeyAble
      *
      * @return string
      */
-    public function foriegnPivotKey(): string
+    public function foreignPivotKey(): string
     {
         return  'rosterable_id';
     }

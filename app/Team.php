@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Interfaces\ForiegnPivotKeyAble;
+use App\Interfaces\ForeignPivotKeyAble;
 use App\Interfaces\RosterableType;
 use App\Roster\RosterQueryTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model implements ForiegnPivotKeyAble
+class Team extends Model implements ForeignPivotKeyAble
 {
     use RosterQueryTrait;
     /**
@@ -23,7 +23,7 @@ class Team extends Model implements ForiegnPivotKeyAble
      *
      * @return string
      */
-    public function foriegnPivotKey(): string
+    public function foreignPivotKey(): string
     {
         return  'rosterable_id';
     }
