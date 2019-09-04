@@ -19,21 +19,6 @@ class Roster extends Model
         return $this->morphTo();
     }
 
-    /**
-     * @return BelongsTo
-     */
-    public function player()
-    {
-        return ($this->rosterable_type == Player::class) ? $this->belongsTo(Player::class, 'rosterable_id'): null;
-    }
-
-    /**
-     * @return BelongsTo
-     */
-    public function team()
-    {
-        return ($this->rosterable_type == Team::class) ? $this->belongsTo(Team::class, 'rosterable_id') : null;
-    }
 
     /**
      * @return BelongsTo
