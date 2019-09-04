@@ -1,28 +1,13 @@
-<?php
-
-namespace App;
+<?phpnamespace App\Models;
 
 use App\Interfaces\ForeignPivotKeyAble;
+use App\Interfaces\RosterableType;
 use App\Roster\RosterQueryTrait;
-
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Player extends Model implements ForeignPivotKeyAble
+class Team extends Model implements ForeignPivotKeyAble
 {
-    use SoftDeletes;
     use RosterQueryTrait;
-    protected $guarded = ['id', 'city_id'];
-
-    /**
-     * @return BelongsTo
-     */
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
     /**
      * Get all of the post's rosters.
      */

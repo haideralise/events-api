@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?phpnamespace App\Models;
 
 use App\Interfaces\ForeignPivotKeyAble;
 use App\Roster\RosterQueryTrait;

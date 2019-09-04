@@ -1,20 +1,18 @@
-<?php
-
-namespace App;
+<?phpnamespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class Tournament extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = [
-        'id',
-        'creator_id',
-        'status_id'
+    protected $fillable = [
+        'title',
+        'place',
+        'description'
     ];
 
     /**
@@ -31,12 +29,19 @@ class Event extends Model
     {
         return $this->belongsTo(User::class, 'creator_id', 'id');
     }
+    /**
+     * @return BelongsTo
+     */
+    public function game()
+    {
+        return $this->belongsTo(Game::class);
+    }
 
     /**
      * @return BelongsToMany
      */
-    public function tournaments()
+    public function events()
     {
-        return $this->belongsToMany(Tournament::class)->using(EventTournament::class);
+        return $this->belongsToMany(Event::class)->using(EventTournament::class);
     }
 }
