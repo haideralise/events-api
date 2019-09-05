@@ -13,7 +13,7 @@ trait RosterQueryTrait
 
     public function rosters()
     {
-        return $this->hasMany(Roster::class, $this->foriegnPivotKey());
+        return $this->hasMany(Roster::class, $this->foreignPivotKey());
     }
 
     /**
@@ -36,6 +36,7 @@ trait RosterQueryTrait
     {
         return $this->rosters()->with('team')->ofTeamType();
     }
+
     public function games()
     {
         return $this->rosters()->with('game');

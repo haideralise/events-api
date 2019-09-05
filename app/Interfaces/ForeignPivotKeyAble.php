@@ -4,12 +4,12 @@
 namespace App\Interfaces;
 
 
-interface ForiegnPivotKeyAble
+interface ForeignPivotKeyAble
 {
     /**
      * returns pivot key field e.g game_id for games in roster
      *
      * @return string
      */
-    public function foriegnPivotKey(): string;
+    public function foreignPivotKey(): string;
 }

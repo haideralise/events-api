@@ -19,4 +19,5 @@ class TableProperties
     const GAME_PROFICIENCIES = 'game_proficiencies';
     const ROSTERS = 'rosters';
     const TEAMS = 'teams';
+    const MATCHES = 'matches';
 }

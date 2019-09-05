@@ -14,33 +14,21 @@ class Roster extends Model
 
     public function player()
     {
-        return $this->belongsTo(Player::class,
-            'rosterable_id',
-            'id'
-        );
+        return $this->belongsTo(Player::class, 'rosterable_id');
     }
     public function team()
     {
-        return $this->belongsTo(Team::class,
-            'rosterable_id',
-            'id'
-        );
+        return $this->belongsTo(Team::class, 'rosterable_id');
     }
 
     public function game()
     {
-        return $this->belongsTo(Game::class,
-            'game_id',
-            'id'
-        );
+        return $this->belongsTo(Game::class);
     }
 
     public function proficiency()
     {
-        return $this->belongsTo(GameProficiency::class,
-            'proficiency_id',
-            'id'
-        );
+        return $this->belongsTo(GameProficiency::class, 'proficiency_id');
     }
 
 
@@ -98,7 +86,5 @@ class Roster extends Model
     {
         return $query->ofType(Player::class)->where('rosterable_id', $team_id);
     }
-
-
 
 }
